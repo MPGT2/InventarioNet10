@@ -34,6 +34,14 @@ InventarioNet10/
 └── Program.cs            Configuración e inicio
 ```
 
+## Despliegues realizados
+
+| Entorno | URL |
+|---|---|
+| IIS local + LAN | <http://192.168.1.68:8085> |
+| Hosting compartido (MonsterASP) | <http://tarea-redes.runasp.net> |
+| Repositorio público | <https://github.com/MPGT2/InventarioNet10> |
+
 ## Ejecución local
 
 ```powershell
