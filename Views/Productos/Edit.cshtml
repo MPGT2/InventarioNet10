@@ -1,0 +1,74 @@
+@model InventarioNet10.Models.Producto
+@{
+    ViewData["Title"] = "Editar producto";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">Editar producto</h1>
+        <p class="text-muted mb-0">Actualizar los datos del registro #@Model.Id</p>
+    </div>
+    <a asp-action="Index" class="btn btn-outline-secondary">Volver al listado</a>
+</div>
+
+<div class="row">
+    <div class="col-lg-7">
+        <form asp-action="Edit" class="card card-body shadow-sm">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="FechaRegistro" />
+
+            <div class="mb-3">
+                <label asp-for="Nombre" class="form-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger small"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Categoria" class="form-label"></label>
+                <input asp-for="Categoria" class="form-control" list="listaCategorias" />
+                <datalist id="listaCategorias">
+                    <option value="Computadoras"></option>
+                    <option value="Monitores"></option>
+                    <option value="Accesorios"></option>
+                    <option value="Almacenamiento"></option>
+                    <option value="Redes"></option>
+                    <option value="Impresoras"></option>
+                </datalist>
+                <span asp-validation-for="Categoria" class="text-danger small"></span>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Precio" class="form-label"></label>
+                    <div class="input-group">
+                        <span class="input-group-text">$</span>
+                        <input asp-for="Precio" class="form-control" step="0.01" />
+                    </div>
+                    <span asp-validation-for="Precio" class="text-danger small"></span>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Stock" class="form-label"></label>
+                    <input asp-for="Stock" class="form-control" />
+                    <span asp-validation-for="Stock" class="text-danger small"></span>
+                </div>
+            </div>
+
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+    <div class="col-lg-5">
+        <div class="card card-body bg-light border-0">
+            <h2 class="h6 text-uppercase text-muted">Operación Actualizar</h2>
+            <p class="mb-2">Al guardar se ejecuta un <code>UPDATE</code> sobre el registro seleccionado.</p>
+            <p class="mb-0 small text-muted">Registrado el @Model.FechaRegistro.ToString("dd/MM/yyyy HH:mm")</p>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

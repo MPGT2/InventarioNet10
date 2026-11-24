@@ -1,0 +1,39 @@
+@model InventarioNet10.Models.Producto
+@{
+    ViewData["Title"] = "Detalle del producto";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h1 class="h3 mb-1">Detalle del producto</h1>
+        <p class="text-muted mb-0">Consulta del registro #@Model.Id</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-outline-primary">Editar</a>
+        <a asp-action="Index" class="btn btn-outline-secondary">Volver</a>
+    </div>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Nombre</dt>
+            <dd class="col-sm-9 fw-semibold">@Model.Nombre</dd>
+
+            <dt class="col-sm-3">Categoría</dt>
+            <dd class="col-sm-9"><span class="badge rounded-pill text-bg-light border">@Model.Categoria</span></dd>
+
+            <dt class="col-sm-3">Precio</dt>
+            <dd class="col-sm-9">$@Model.Precio.ToString("N2")</dd>
+
+            <dt class="col-sm-3">Stock</dt>
+            <dd class="col-sm-9">@Model.Stock unidades</dd>
+
+            <dt class="col-sm-3">Valor en inventario</dt>
+            <dd class="col-sm-9">$@((Model.Precio * Model.Stock).ToString("N2"))</dd>
+
+            <dt class="col-sm-3">Fecha de registro</dt>
+            <dd class="col-sm-9 mb-0">@Model.FechaRegistro.ToString("dd/MM/yyyy HH:mm")</dd>
+        </dl>
+    </div>
+</div>
